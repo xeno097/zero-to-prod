@@ -17,6 +17,14 @@ serde = { version = "1", features = ["derive"] }
 config = "0.11"
 uuid = { version = "1", features = ["v4"] }
 chrono = { version = "0.4.22", default-features = false, features = ["clock"] }
+log = "0.4"
+tracing = { version = "0.1", features = ["log"] }
+tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
+tracing-bunyan-formatter = "0.3"
+# Needed to redirect log events to tracing
+tracing-log = "0.1"
+secrecy = { version = "0.8", features = ["serde"] }
+tracing-actix-web = "0.6"
 
 [dependencies.sqlx]
 version = "0.6"
@@ -32,3 +40,5 @@ features = [
 
 [dev-dependencies]
 reqwest = "0.11"
+# Needed to invoke init_subscriber only once when running tests
+once_cell = "1"
